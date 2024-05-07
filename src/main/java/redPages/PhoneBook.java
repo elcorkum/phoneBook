@@ -3,11 +3,6 @@ package redPages;
 import java.util.*;
 
 public class PhoneBook {
-    //name: phoneNumber1, phoneNumber2
-    //name: phoneNumber
-
-    //String name;
-    //ArrayList of strings
 
     private Map<String, List<String>> phoneRecord;
 
