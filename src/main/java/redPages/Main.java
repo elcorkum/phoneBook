@@ -13,6 +13,7 @@ public class Main {
         phoneBook.add("Nerea", "306-465-8910");
         phoneBook.add("Baraka", "307-465-8910");
         phoneBook.add("Tuli", "308-465-8910");
+        phoneBook.add("Pierre", "445-856-9087");
 
         List<String> myNumbers = new ArrayList<>();
         myNumbers.add("309-001-6789");
@@ -24,7 +25,7 @@ public class Main {
         phoneBook.remove("Jamal");
         System.out.println(phoneBook.hasEntry("Jamal"));
 
-        System.out.println(phoneBook.lookup("Pierre"));
+        System.out.println(phoneBook.lookup("Jamal"));
 
         System.out.println(phoneBook.reverseLookUp("309-002-6788"));
 

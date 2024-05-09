@@ -3,11 +3,6 @@ package redPages;
 import java.util.*;
 
 public class PhoneBook {
-    //name: phoneNumber1, phoneNumber2
-    //name: phoneNumber
-
-    //String name;
-    //ArrayList of strings
 
     private Map<String, List<String>> phoneRecord;
 
@@ -24,18 +19,31 @@ public class PhoneBook {
     }
 
     public void add(String name, String phoneNumber){
+        //check for an existing entry
+        //getOrDefault
         List<String> numbers = new ArrayList<>();
         numbers.add(phoneNumber);
         phoneRecord.put(name, numbers);
     }
 
-    public void addAll(String name, List<String> phoneNumbers){
-        phoneRecord.put(name, phoneNumbers);
-
+    public void addAll(String name,List<String> phoneNumbers){
+        if(phoneRecord.containsKey(name)){
+            List<String> existingPhoneNumbers = phoneRecord.get(name);
+            existingPhoneNumbers.addAll(phoneNumbers);
+            phoneRecord.put(name, existingPhoneNumbers);
+        } else {
+            phoneRecord.put(name, phoneNumbers);
+        }
     }
 
     public void remove(String name){
-        phoneRecord.remove(name);
+        if (phoneRecord.containsKey(name)){
+            phoneRecord.remove(name);
+        } else {
+            String message = "Cannot delete contact that's not in PhoneBook";
+            System.out.println(message);
+        }
+
     }
 
     public boolean hasEntry(String name){
@@ -48,7 +56,11 @@ public class PhoneBook {
     }
 
     public List<String> lookup(String name){
-        return phoneRecord.get(name);
+        List<String> phoneNumbers = new ArrayList<>();
+        if(phoneRecord.containsKey(name)){
+            phoneNumbers.addAll(phoneRecord.get(name));
+        }
+       return phoneNumbers;
     }
 
     public String reverseLookUp(String phoneNumber){
@@ -60,7 +72,6 @@ public class PhoneBook {
             }else{
                 contactPresent = "Contact not found";
             }
-
         }
         return contactPresent;
     }
